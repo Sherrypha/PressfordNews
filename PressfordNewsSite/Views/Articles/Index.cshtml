@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PressfordNewsSite.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Latest News</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<div>
+@foreach (var item in Model)
+{
+    <div class="container-fluid">
+        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+        <p class="lead">@Html.DisplayFor(modelItem => item.Summary )</p>
+        <em class="text-right">Published by 
+        @Html.DisplayFor(modelItem => item.User.FirstName) 
+        @Html.DisplayFor(modelItem => item.User.LastName )
+         </em>        
+    </div>
+}
+</div>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePublished)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePublished)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArticleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArticleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArticleID })
+        </td>
+    </tr>
+}
+
+</table>*@
