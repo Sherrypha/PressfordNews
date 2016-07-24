@@ -200,46 +200,49 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs">
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Article1.cs">
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__RefactorLog.cs">
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InterestCalculator.cs" />
     <Compile Include="Models\Like.cs">
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PressfordNewsModel.Context.cs">
+    <Compile Include="Models\PressfordNewsData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PressfordNewsModel.Context.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PressfordNewsModel.cs">
+    <Compile Include="Models\PressfordNewsData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PressfordNewsModel.Designer.cs">
+    <Compile Include="Models\PressfordNewsData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PressfordNewsModel.edmx</DependentUpon>
+      <DependentUpon>PressfordNewsData.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\PressfordNewsModelData.cs" />
+    <Compile Include="Models\TimeToSinceString.cs" />
     <Compile Include="Models\User.cs">
-      <DependentUpon>PressfordNewsModel.tt</DependentUpon>
+      <DependentUpon>PressfordNewsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -253,15 +256,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\PressfordNewsModel.Context.tt">
+    <Content Include="Models\PressfordNewsData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PressfordNewsModel.edmx</DependentUpon>
-      <LastGenOutput>PressfordNewsModel.Context.cs</LastGenOutput>
+      <DependentUpon>PressfordNewsData.edmx</DependentUpon>
+      <LastGenOutput>PressfordNewsData.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PressfordNewsModel.tt">
+    <Content Include="Models\PressfordNewsData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PressfordNewsModel.edmx</DependentUpon>
-      <LastGenOutput>PressfordNewsModel.cs</LastGenOutput>
+      <DependentUpon>PressfordNewsData.edmx</DependentUpon>
+      <LastGenOutput>PressfordNewsData.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -276,12 +279,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\PressfordNewsModel.edmx">
+    <EntityDeploy Include="Models\PressfordNewsData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PressfordNewsModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PressfordNewsData.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PressfordNewsModel.edmx.diagram">
-      <DependentUpon>PressfordNewsModel.edmx</DependentUpon>
+    <Content Include="Models\PressfordNewsData.edmx.diagram">
+      <DependentUpon>PressfordNewsData.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -336,6 +339,11 @@
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Likes\Create.cshtml" />
+    <Content Include="Views\Likes\Delete.cshtml" />
+    <Content Include="Views\Likes\Details.cshtml" />
+    <Content Include="Views\Likes\Edit.cshtml" />
+    <Content Include="Views\Likes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,7 +18,6 @@ namespace PressfordNewsSite.Models
         public User()
         {
             this.Articles = new HashSet<Article>();
-            this.Articles1 = new HashSet<Article>();
             this.Likes = new HashSet<Like>();
         }
     
@@ -30,8 +29,6 @@ namespace PressfordNewsSite.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Articles1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Like> Likes { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<PressfordNewsSite.Models.Article>
+    @using PressfordNewsSite.Models;
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +13,21 @@
 <div>
 @foreach (var item in Model)
 {
-    <div class="container-fluid">
-        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
-        <p class="lead">@Html.DisplayFor(modelItem => item.Summary )</p>
+   <div class="well">
+                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+       <h5>@Html.DisplayFor(modelItem => item.Summary )<h5>
         <em class="text-right">Published by 
         @Html.DisplayFor(modelItem => item.User.FirstName) 
         @Html.DisplayFor(modelItem => item.User.LastName )
-         </em>        
-    </div>
+         </em> 
+        <em class="text-right">
+            on
+             @Html.DisplayFor(modelITem => item.DatePublished)
+        </em> 
+ @Html.ActionLink("Read Article", "Details", new { id = item.ArticleID })
+    </div >
 }
-</div>
+</div >
 
 @*<table class="table">
     <tr>

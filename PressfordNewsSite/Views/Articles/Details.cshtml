@@ -4,55 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>Article</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>@Html.DisplayFor(model => model.Title)</h3>
+            </div>
+            <div class="panel-body">
+                <p>@Html.DisplayFor(model => model.Body)</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePublished)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatePublished)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Summary)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Summary)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-4">Published By: @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName) </div><div class="col-md-4">Date Published:@Html.DisplayFor(model => model.DatePublished) </div>
+                    <div class="col-md-4"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> @Html.Encode(ViewData["Likes"] ) </div>
+                </div>
+            </div>
+        </div>
+  </div>

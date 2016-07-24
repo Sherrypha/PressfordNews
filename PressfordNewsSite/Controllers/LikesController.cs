@@ -10,115 +10,116 @@ using PressfordNewsSite.Models;
 
 namespace PressfordNewsSite.Controllers
 {
-    public class ArticlesController : Controller
+    public class LikesController : Controller
     {
         private PressfordNewsData db = new PressfordNewsData();
 
-        // GET: Articles ordered by daate
+        // GET: Likes
         public ActionResult Index()
         {
-            var articles = db.Articles.Include(a => a.User);
-            return View(articles.OrderByDescending(a =>a.DatePublished).ToList());
+            var likes = db.Likes.Include(l => l.Article).Include(l => l.User);
+            return View(likes.ToList());
         }
 
-        // GET: Articles/Details/5
+        // GET: Likes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            var Likes = db.Likes;
-            if (article == null)
+            Like like = db.Likes.Find(id);
+            if (like == null)
             {
                 return HttpNotFound();
             }
-            int likes = db.Likes.Count(l => l.ArticleID == id);
-            ViewData["Num_Likes"] = likes;
-            return View(article);
+            return View(like);
         }
 
-        // GET: Articles/Create
+        // GET: Likes/Create
         public ActionResult Create()
         {
-            ViewBag.AuthorID = new SelectList(db.Users, "UserID", "FirstName");
+            ViewBag.ArticleID = new SelectList(db.Articles, "ArticleID", "Title");
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName");
             return View();
         }
 
-        // POST: Articles/Create
+        // POST: Likes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ArticleID,Title,Body,DatePublished,AuthorID,Summary")] Article article)
+        public ActionResult Create([Bind(Include = "UserID,ArticleID,LikeId")] Like like)
         {
             if (ModelState.IsValid)
             {
-                db.Articles.Add(article);
+                db.Likes.Add(like);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AuthorID = new SelectList(db.Users, "UserID", "FirstName", article.AuthorID);
-            return View(article);
+            ViewBag.ArticleID = new SelectList(db.Articles, "ArticleID", "Title", like.ArticleID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", like.UserID);
+            return View(like);
         }
 
-        // GET: Articles/Edit/5
+        // GET: Likes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            Like like = db.Likes.Find(id);
+            if (like == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AuthorID = new SelectList(db.Users, "UserID", "FirstName", article.AuthorID);
-            return View(article);
+            ViewBag.ArticleID = new SelectList(db.Articles, "ArticleID", "Title", like.ArticleID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", like.UserID);
+            return View(like);
         }
 
-        // POST: Articles/Edit/5
+        // POST: Likes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ArticleID,Title,Body,DatePublished,AuthorID,Summary")] Article article)
+        public ActionResult Edit([Bind(Include = "UserID,ArticleID,LikeId")] Like like)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(article).State = EntityState.Modified;
+                db.Entry(like).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AuthorID = new SelectList(db.Users, "UserID", "FirstName", article.AuthorID);
-            return View(article);
+            ViewBag.ArticleID = new SelectList(db.Articles, "ArticleID", "Title", like.ArticleID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "FirstName", like.UserID);
+            return View(like);
         }
 
-        // GET: Articles/Delete/5
+        // GET: Likes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            Like like = db.Likes.Find(id);
+            if (like == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(like);
         }
 
-        // POST: Articles/Delete/5
+        // POST: Likes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Article article = db.Articles.Find(id);
-            db.Articles.Remove(article);
+            Like like = db.Likes.Find(id);
+            db.Likes.Remove(like);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

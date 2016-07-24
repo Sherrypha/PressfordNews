@@ -17,7 +17,7 @@ namespace PressfordNewsSite.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Article()
         {
-            this.Users = new HashSet<User>();
+            this.Likes = new HashSet<Like>();
         }
     
         public int ArticleID { get; set; }
@@ -29,6 +29,6 @@ namespace PressfordNewsSite.Models
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }

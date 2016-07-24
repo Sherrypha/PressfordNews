@@ -18,6 +18,7 @@ namespace PressfordNewsSite.Models
         public int ArticleID { get; set; }
         public int LikeId { get; set; }
     
+        public virtual Article Article { get; set; }
         public virtual User User { get; set; }
     }
 }
